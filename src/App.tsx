@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import { quizdetails } from './service/quiz_Service'
+import {QuizType} from './Types/quizTypes'
 
 function App() {
+  useEffect(() => {
+    async function fetchData() {
+      const question: QuizType[] = await quizdetails(5,'easy')
+      console.log(question)
+    }
+    fetchData()
+  }, [])
+  // if(!.length)
+  // return<h3>Loading...</h3>
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }
