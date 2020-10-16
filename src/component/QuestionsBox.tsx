@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { QuestionPropsType } from './../Types/quizTypes'
+import './../App.css'
 
 export const QuestionBox: React.FC<QuestionPropsType> = ({ question, options, callback }) => {
     let [ans, Setans] = useState('')
@@ -10,13 +11,14 @@ export const QuestionBox: React.FC<QuestionPropsType> = ({ question, options, ca
     return (
         <div className='Question-main'>
             <div className='questions-box'>
-                <h3>{question}</h3>
+                <h3>{question.toUpperCase()}</h3>
             </div>
             <form onSubmit={(e: React.FormEvent<EventTarget>) => callback(e, ans)} className='Answer-List'>
                 {
                     options.map((opt: string, ind: number) => {
                         return(
-                            <div key={ind}>
+                            <div key={ind} className='options-main'>
+                            <span>{ind+1}.</span>
                                 <label>
                                     <input 
                                     type='radio'
@@ -26,7 +28,7 @@ export const QuestionBox: React.FC<QuestionPropsType> = ({ question, options, ca
                                     checked={ans === opt}
                                     onChange={HandleSubmit}
                                     />
-                                    {opt}                                    
+                                    <span className='opt'>{opt.toUpperCase()}</span>                                    
                                 </label>
 
                             </div>
@@ -34,7 +36,10 @@ export const QuestionBox: React.FC<QuestionPropsType> = ({ question, options, ca
 
                     })
                 }
-                <input type="submit" className="submit"/>
+                <span className='submit-btn'>
+                <input type="submit" className="submit" value='Submit' />
+
+                </span>
             </form>
 
         </div>

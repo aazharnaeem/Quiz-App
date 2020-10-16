@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const questions: QuizType[] = await quizdetails(5, `${data.Difficulty}`)
+      const questions: QuizType[] = await quizdetails(10, `${data.Difficulty}`)
       // console.log(question)
       setQuiz(
         questions
@@ -77,7 +77,7 @@ function App() {
     <div>
       <h1 style={{ textAlign: 'center' }}>Quiz App</h1>
       <div className='select-box'>
-        SELECT DIFFICULTI <select onChange={ChanegDifficulty}>
+        SELECT DIFFICULTY   <select onChange={ChanegDifficulty}>
           <option value='easy' >easy</option>
           <option value='medium'>medium</option>
           <option value='hard'>hard</option>
