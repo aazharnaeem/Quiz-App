@@ -23,6 +23,6 @@ export type QuestionPropsType = {
 }
 
 export type DataType={
-    // QuestionsNumber: number,
+    QuestionsNumber: number,
     Difficulty: string
 }
